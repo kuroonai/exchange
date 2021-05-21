@@ -1,7 +1,7 @@
 from setuptools import setup
 
 APP=['exchange.py']
-OPTIONS={'argv_emulation':True, 'iconfile':'/Users/kuroonai/Downloads/macos/kcc.icns'}
+OPTIONS={'argv_emulation':True, 'iconfile':'/Users/kuroonai/Documents/GitHub/exchange/macos/exchange/logo.icns'}
 setup(
    name='exchange',
    version='1.0',

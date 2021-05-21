@@ -48,7 +48,7 @@ layout = [
 
 
 
-window = sg.Window("Kuroonai's extension changer", layout, icon='logo.ico')
+window = sg.Window("Kuroonai's extension changer", layout, icon='logo.icns')
 
 if __name__ == "__main__":
     
