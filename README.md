@@ -1,95 +1,82 @@
-# Enhanced Extension Changer
+# Extension Changer (extension_changer)
 
-A GUI application for batch changing file extensions with additional advanced features.
+A cross-platform utility for batch changing file extensions with a modern Qt interface.
 
-## Overview
-
-Enhanced Extension Changer is a Python application that allows you to easily change file extensions for multiple files at once. It combines the functionality of command-line batch processing with the ease of use of a graphical interface.
+![Extension Changer Screenshot](https://raw.githubusercontent.com/kuroonai/exchange/main/screenshots/screenshot.png)
 
 ## Features
 
-- **User-friendly GUI**: Simple, intuitive interface for managing file extensions
-- **Multiple Selection Methods**:
-  - Select a folder to process all files within it
-  - Select specific files individually
-- **Smart Extension Detection**: Automatically identifies available extensions from selected files
-- **Preview Changes**: See what will happen before applying any changes
-- **Advanced Options**:
-  - Keep original files (create copies instead of renaming)
-  - Configurable multiprocessing with CPU core selection for faster processing
-- **Real-time Progress Tracking**: Detailed progress bar and status updates
-- **Cancel Operation**: Ability to cancel ongoing operations
-
-## Screenshots
-
-[Add screenshots here once the app is complete]
+- Batch rename file extensions
+- Option to create copies instead of renaming files
+- Preview changes before executing
+- Multi-processing support for faster operations
+- Advanced options for CPU usage control
+- Modern Qt-based interface
+- Cross-platform (Windows, macOS, Linux)
 
 ## Installation
 
-### Requirements
-
-- Python 3.9 or higher
-- PySimpleGUI
-- tqdm
-
-### Install Dependencies
+### Using pip (Recommended)
 
 ```bash
-# Using pip
-pip install PySimpleGUI tqdm
-
-# Or using conda
-conda install conda-forge::pysimplegui
-pip install tqdm
+pip install extension_changer
 ```
 
-### Download the Application
-
-Clone the repository:
+### Manual Installation
 
 ```bash
-git clone https://github.com/yourusername/enhanced-extension-changer.git
-cd enhanced-extension-changer
+git clone https://github.com/kuroonai/exchange.git
+cd exchange
+pip install -e .
 ```
 
 ## Usage
 
-1. Run the application:
+### Command Line
+
+Once installed, you can start the application from the command line:
 
 ```bash
-python enhanced_extension_changer.py
+extension_changer
 ```
 
-2. Select files using one of the two methods:
-   - Click "Browse" next to "Source:" to select a folder containing files
-   - Click "Browse" next to "Or select files:" to select individual files
+### Basic Workflow
 
-3. Choose the source extension from the dropdown menu
+1. Select a folder or individual files
+2. Choose the source extension from the dropdown
+3. Specify the target extension
+4. Optionally, check "Keep original files" to create copies
+5. Click "Preview" to see the changes before applying
+6. Click "Convert" to execute the extension change
 
-4. Enter the desired target extension in the "To:" field
+### Advanced Options
 
-5. Optionally adjust advanced settings:
-   - Check "Keep original files" to create copies instead of renaming
-   - Enable/disable multiprocessing and adjust CPU core usage
+- **Use multiprocessing**: Enable for faster processing of many files
+- **CPU cores to use**: Control how many CPU cores to dedicate to the task
 
-6. Click "Preview" to see what changes will be made
+## Development
 
-7. Click "Convert" to process the files
+### Requirements
 
-## Files
+- Python 3.7+
+- PySide6 (or PyQt6)
 
-- `exc.py` - Main application file
-- `exc.ico` - Application icon (must be in the same directory as the script)
+### Setup Development Environment
 
-## Contributing
+```bash
+git clone https://github.com/kuroonai/exchange.git
+cd exchange
+pip install -e .
+```
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+## Author
+
+Created by Naveen Vasudevan ([@kuroonai](https://github.com/kuroonai))
+
+## Building from Source
+
+See [BUILDING.md](BUILDING.md) for instructions on building standalone executables for Windows, macOS, and Linux.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Original work by Naveen Kumar Vasudevan (naveenovan@gmail.com)
-- Enhanced and improved with additional features
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

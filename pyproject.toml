@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "extension_changer"
+version = "1.0.0"
+description = "A cross-platform utility for batch changing file extensions"
+readme = "README.md"
+authors = [
+    {name = "Naveen Vasudevan", email = "your.email@example.com"}
+]
+license = "MIT"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Utilities",
+    "Topic :: Desktop Environment :: File Managers",
+]
+keywords = ["file", "extension", "batch", "converter", "utility"]
+requires-python = ">=3.7"
+dependencies = [
+    "PySide6>=6.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/kuroonai/exchange"
+Issues = "https://github.com/kuroonai/exchange/issues"
+Documentation = "https://github.com/kuroonai/exchange#readme"
+
+[project.scripts]
+extension_changer = "extension_changer.__main__:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]

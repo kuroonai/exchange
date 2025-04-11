@@ -2,6 +2,11 @@
 # -*- coding: utf-8 -*-
 """
 Enhanced Extension Changer
+
+Created by Naveen Vasudevan <naveenovan@gmail.com>
+GitHub: https://github.com/kuroonai/exchange
+
+A cross-platform utility for batch changing file extensions with multiprocessing support.
 """
 
 import os
@@ -16,7 +21,8 @@ from PySide6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, 
     QLabel, QLineEdit, QPushButton, QProgressBar, QFileDialog, 
     QComboBox, QCheckBox, QGroupBox, QSlider, QTableWidget, 
-    QTableWidgetItem, QDialog, QScrollArea, QSizePolicy, QFrame
+    QTableWidgetItem, QDialog, QScrollArea, QSizePolicy, QFrame,
+    QMessageBox
 )
 from PySide6.QtCore import Qt, QThread, Signal, Slot, QSize
 from PySide6.QtGui import QIcon
@@ -153,17 +159,23 @@ class PreviewDialog(QDialog):
 
 
 class ExtensionChanger(QMainWindow):
-    def __init__(self):
+    def __init__(self, icon_path=None):
         super().__init__()
         
-        self.setWindowTitle("Extension Changer")
+        self.setWindowTitle("Extension Changer (extension_changer)")
         self.setMinimumSize(600, 500)
         
         # Set icon if available
-        try:
-            self.setWindowIcon(QIcon("exc.ico"))
-        except:
-            pass  # Ignore if icon file not found
+        if icon_path and os.path.exists(str(icon_path)):
+            try:
+                icon = QIcon(str(icon_path))
+                self.setWindowIcon(icon)
+                print(f"Icon set from path: {icon_path}")
+                print(f"Icon is null: {icon.isNull()}")
+            except Exception as e:
+                print(f"Error setting icon: {e}")
+        else:
+            print(f"Icon path not valid: {icon_path}")
         
         # Initialize variables
         self.files = []
@@ -358,7 +370,6 @@ class ExtensionChanger(QMainWindow):
                 self.update_extension_list()
                 self.status_label.setText(f"Status: Found {len(self.files)} files in folder")
             except Exception as e:
-                from PySide6.QtWidgets import QMessageBox
                 QMessageBox.critical(self, "Error", f"Error accessing folder: {e}")
     
     def browse_files(self):
@@ -424,18 +435,15 @@ class ExtensionChanger(QMainWindow):
         to_ext = self.to_ext.text()
         
         if not from_ext:
-            from PySide6.QtWidgets import QMessageBox
             QMessageBox.warning(self, "Warning", "Please select a source extension first")
             return
             
         if not to_ext:
-            from PySide6.QtWidgets import QMessageBox
             QMessageBox.warning(self, "Warning", "Please enter a destination extension")
             return
         
         matching_files = self.get_files_with_extension(from_ext)
         if not matching_files:
-            from PySide6.QtWidgets import QMessageBox
             QMessageBox.information(self, "Info", "No files match the selected extension")
             return
         
@@ -448,24 +456,20 @@ class ExtensionChanger(QMainWindow):
         to_ext = self.to_ext.text()
         
         if not from_ext:
-            from PySide6.QtWidgets import QMessageBox
             QMessageBox.warning(self, "Warning", "Please select a source extension first")
             return
             
         if not to_ext:
-            from PySide6.QtWidgets import QMessageBox
             QMessageBox.warning(self, "Warning", "Please enter a destination extension")
             return
         
         matching_files = self.get_files_with_extension(from_ext)
         
         if not matching_files:
-            from PySide6.QtWidgets import QMessageBox
             QMessageBox.information(self, "Info", "No files match the selected extension")
             return
         
         # Ask for confirmation
-        from PySide6.QtWidgets import QMessageBox
         reply = QMessageBox.question(
             self, 
             "Confirm Conversion", 
