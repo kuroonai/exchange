@@ -8,7 +8,7 @@ version = "1.0.0"
 description = "A cross-platform utility for batch changing file extensions"
 readme = "README.md"
 authors = [
-    {name = "Naveen Vasudevan", email = "your.email@example.com"}
+    {name = "Naveen Vasudevan", email = "naveenovan@gmail.com"}
 ]
 license = "MIT"
 classifiers = [

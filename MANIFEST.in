@@ -1,3 +1,3 @@
 include LICENSE
 include README.md
-recursive-include src/exchange/resources *
+recursive-include src/extension_changer/resources *
